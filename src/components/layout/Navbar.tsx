@@ -11,6 +11,7 @@ const vetNavLinks = [
   { href: "/appointments", label: "Appointments" },
   { href: "/queue", label: "Queue Management" },
   { href: "/reports", label: "Medical Reports" },
+  { href: "/vet-pets", label: "🐾 Pet Owner Pets" },
 ];
 
 const ownerNavLinks = [

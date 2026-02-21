@@ -2,40 +2,35 @@
 
 import { useState } from "react";
 import { useAuth } from "@/context/AuthContext";
-
-interface Pet {
-  id: string;
-  name: string;
-  species: string;
-  breed: string;
-  age: string;
-  gender: string;
-  color: string;
-  weight: string;
-  notes: string;
-  registeredAt: string;
-}
+import { usePets, type Pet } from "@/context/PetsContext";
 
 const SPECIES_OPTIONS = ["Dog", "Cat", "Rabbit", "Bird", "Guinea Pig", "Hamster", "Fish", "Other"];
 
-const initialPets: Pet[] = [
-  {
-    id: "P-001",
-    name: "Max",
-    species: "Dog",
-    breed: "German Shepherd",
-    age: "3 years",
-    gender: "Male",
-    color: "Black & Tan",
-    weight: "30 kg",
-    notes: "Vaccinated. Friendly with children.",
-    registeredAt: "2025-01-15",
-  },
+const KENYA_COUNTIES = [
+  "Baringo", "Bomet", "Bungoma", "Busia", "Elgeyo-Marakwet", "Embu",
+  "Garissa", "Homa Bay", "Isiolo", "Kajiado", "Kakamega", "Kericho",
+  "Kiambu", "Kilifi", "Kirinyaga", "Kisii", "Kisumu", "Kitui",
+  "Kwale", "Laikipia", "Lamu", "Machakos", "Makueni", "Mandera",
+  "Marsabit", "Meru", "Migori", "Mombasa", "Murang'a", "Nairobi",
+  "Nakuru", "Nandi", "Narok", "Nyamira", "Nyandarua", "Nyeri",
+  "Samburu", "Siaya", "Taita-Taveta", "Tana River", "Tharaka-Nithi",
+  "Trans Nzoia", "Turkana", "Uasin Gishu", "Vihiga", "Wajir", "West Pokot",
 ];
+
+const speciesIcon: Record<string, string> = {
+  Dog: "🐕",
+  Cat: "🐈",
+  Rabbit: "🐇",
+  Bird: "🐦",
+  "Guinea Pig": "🐹",
+  Hamster: "🐹",
+  Fish: "🐟",
+  Other: "🐾",
+};
 
 export default function MyPetsPage() {
   const { user } = useAuth();
-  const [pets, setPets] = useState<Pet[]>(initialPets);
+  const { pets, addPet } = usePets();
   const [showForm, setShowForm] = useState(false);
   const [viewPet, setViewPet] = useState<Pet | null>(null);
   const [search, setSearch] = useState("");
@@ -49,10 +44,14 @@ export default function MyPetsPage() {
     color: "",
     weight: "",
     notes: "",
+    location: "",
   });
   const [formError, setFormError] = useState("");
 
-  const filtered = pets.filter(
+  // Only show pets belonging to the current owner
+  const myPets = pets.filter((p) => p.ownerName === user?.name);
+
+  const filtered = myPets.filter(
     (p) =>
       p.name.toLowerCase().includes(search.toLowerCase()) ||
       p.species.toLowerCase().includes(search.toLowerCase()) ||
@@ -69,6 +68,7 @@ export default function MyPetsPage() {
     if (!form.name.trim()) { setFormError("Pet name is required."); return; }
     if (!form.species) { setFormError("Species is required."); return; }
     if (!form.gender) { setFormError("Gender is required."); return; }
+    if (!form.location) { setFormError("Location (county) is required."); return; }
 
     const newPet: Pet = {
       id: `P-${String(pets.length + 1).padStart(3, "0")}`,
@@ -80,23 +80,14 @@ export default function MyPetsPage() {
       color: form.color.trim() || "—",
       weight: form.weight.trim() || "—",
       notes: form.notes.trim(),
+      location: form.location,
+      ownerName: user?.name ?? "Unknown",
       registeredAt: new Date().toISOString().split("T")[0],
     };
 
-    setPets([...pets, newPet]);
-    setForm({ name: "", species: "", breed: "", age: "", gender: "", color: "", weight: "", notes: "" });
+    addPet(newPet);
+    setForm({ name: "", species: "", breed: "", age: "", gender: "", color: "", weight: "", notes: "", location: "" });
     setShowForm(false);
-  };
-
-  const speciesIcon: Record<string, string> = {
-    Dog: "🐕",
-    Cat: "🐈",
-    Rabbit: "🐇",
-    Bird: "🐦",
-    "Guinea Pig": "🐹",
-    Hamster: "🐹",
-    Fish: "🐟",
-    Other: "🐾",
   };
 
   return (
@@ -155,6 +146,10 @@ export default function MyPetsPage() {
                 <p><span className="font-medium text-gray-700">Age:</span> {pet.age}</p>
                 <p><span className="font-medium text-gray-700">Gender:</span> {pet.gender}</p>
                 <p><span className="font-medium text-gray-700">Weight:</span> {pet.weight}</p>
+                <p>
+                  <span className="font-medium text-gray-700">📍 Location:</span>{" "}
+                  <span className="text-green-700 font-semibold">{pet.location}</span>
+                </p>
                 <p><span className="font-medium text-gray-700">Registered:</span> {pet.registeredAt}</p>
               </div>
               <button
@@ -274,6 +269,21 @@ export default function MyPetsPage() {
                 </div>
 
                 <div className="col-span-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">📍 Location (County) *</label>
+                  <select
+                    name="location"
+                    value={form.location}
+                    onChange={handleChange}
+                    className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                  >
+                    <option value="">Select county in Kenya</option>
+                    {KENYA_COUNTIES.map((county) => (
+                      <option key={county} value={county}>{county}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="col-span-2">
                   <label className="block text-sm font-medium text-gray-700 mb-1">Additional Notes</label>
                   <textarea
                     name="notes"
@@ -336,6 +346,8 @@ export default function MyPetsPage() {
                   ["Gender", viewPet.gender],
                   ["Color", viewPet.color],
                   ["Weight", viewPet.weight],
+                  ["📍 Location", viewPet.location],
+                  ["Owner", viewPet.ownerName],
                   ["Registered", viewPet.registeredAt],
                 ].map(([label, value]) => (
                   <div key={label} className="bg-gray-50 rounded-lg p-3">
