@@ -154,12 +154,6 @@ export default function LoginPage() {
                   Sign In as Doctor
                 </button>
 
-                {/* Demo hint */}
-                <div className="bg-green-50 border border-green-200 rounded-lg p-3 text-xs text-green-800">
-                  <p className="font-semibold mb-1">Demo credentials:</p>
-                  <p>Email: <span className="font-mono">dr.peter@vetms.ac.ke</span></p>
-                  <p>Password: <span className="font-mono">vet123</span></p>
-                </div>
               </form>
             )}
 
