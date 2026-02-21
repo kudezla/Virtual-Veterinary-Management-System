@@ -21,6 +21,10 @@ The application is a complete web-based Virtual Veterinary Management System for
 - [x] Appointment Scheduling module — form, status filters, complete/cancel actions, view modal with SMS note
 - [x] Queue Management module — priority sorting (Emergency first), real-time status updates, add/start/complete/skip/remove
 - [x] Medical Reports module — form, type filters, search, printable report modal
+- [x] Role-based login system — Veterinary Doctor and Pet Owner tabs
+- [x] AuthContext with localStorage persistence and route protection
+- [x] Pet Owner /my-pets page — register pets, view cards, view details modal
+- [x] Navbar updated with role-based nav links, user info, and logout button
 
 ## Current Structure
 
