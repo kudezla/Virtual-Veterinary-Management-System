@@ -25,6 +25,10 @@ The application is a complete web-based Virtual Veterinary Management System for
 - [x] AuthContext with localStorage persistence and route protection
 - [x] Pet Owner /my-pets page — register pets, view cards, view details modal
 - [x] Navbar updated with role-based nav links, user info, and logout button
+- [x] PetsContext created for shared pet state between Pet Owner and Vet Doctor
+- [x] Pet Owner /my-pets: Kenya county location field added to register form, displayed in cards and modal
+- [x] New /vet-pets page for Vet Doctor — searchable table of all pet owner pets with county/species filters and detail modal
+- [x] Navbar: "Pet Owner Pets" link added for vet role pointing to /vet-pets
 
 ## Current Structure
 
