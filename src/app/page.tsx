@@ -66,15 +66,8 @@ export default function DashboardPage() {
           <span className="text-5xl">🐾</span>
           <div>
             <h1 className="text-3xl font-bold">Virtual Veterinary Management System</h1>
-            <p className="mt-1 text-green-100 text-lg">
-              Machakos University &mdash; Improving veterinary service delivery in Kenya
-            </p>
           </div>
         </div>
-        <p className="mt-4 text-green-100 max-w-2xl">
-          A web-based platform automating animal registration, appointment scheduling, queue management,
-          and medical report generation for veterinary centers across Kenya.
-        </p>
       </div>
 
       {/* Stats */}
