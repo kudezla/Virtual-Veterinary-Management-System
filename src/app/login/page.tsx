@@ -5,11 +5,9 @@ import { useAuth } from "@/context/AuthContext";
 
 type LoginRole = "vet" | "owner";
 
-// Demo credentials
+// Vet credentials (configured in system)
 const VET_CREDENTIALS = [
-  { email: "dr.peter@vetms.ac.ke", password: "vet123", name: "Dr. Peter" },
-  { email: "dr.wanjiku@vetms.ac.ke", password: "vet123", name: "Dr. Wanjiku" },
-  { email: "admin@vetms.ac.ke", password: "admin123", name: "Admin" },
+  { email: "vet@vetms.ac.ke", password: "vet123", name: "Dr. Vet" },
 ];
 
 export default function LoginPage() {
@@ -127,7 +125,7 @@ export default function LoginPage() {
                     type="email"
                     value={vetEmail}
                     onChange={(e) => setVetEmail(e.target.value)}
-                    placeholder="dr.peter@vetms.ac.ke"
+                    placeholder="doctor@vetms.ac.ke"
                     required
                     className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
                   />
