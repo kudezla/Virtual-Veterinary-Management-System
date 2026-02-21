@@ -32,7 +32,7 @@ const initialReports: MedicalReport[] = [
     diagnosis: "Healthy — routine vaccination",
     treatment: "Rabies vaccine administered",
     medication: "Rabies vaccine (1 dose)",
-    vet: "Dr. Omuya",
+    vet: "Dr. Peter",
     notes: "Animal is in good health. No adverse reactions observed.",
     nextVisit: "2026-02-10",
   },
@@ -62,14 +62,14 @@ const initialReports: MedicalReport[] = [
     diagnosis: "Mild respiratory infection",
     treatment: "Antibiotic injection administered. Supportive care recommended.",
     medication: "Oxytetracycline 20% (3 days)",
-    vet: "Dr. Omuya",
+    vet: "Dr. Peter",
     notes: "Isolate from other cattle. Monitor temperature daily.",
     nextVisit: "2025-02-25",
   },
 ];
 
 const reportTypes: ReportType[] = ["Treatment", "Vaccination", "Diagnosis", "Discharge", "Follow-up"];
-const vets = ["Dr. Omuya", "Dr. Kamau", "Dr. Njoroge", "Dr. Wanjiru"];
+const vets = ["Dr. Peter", "Dr. Kamau", "Dr. Njoroge", "Dr. Wanjiru"];
 
 const typeColors: Record<ReportType, string> = {
   Treatment: "bg-red-100 text-red-700",

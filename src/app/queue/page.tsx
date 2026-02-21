@@ -31,7 +31,7 @@ const initialQueue: QueueEntry[] = [
     priority: "Normal",
     status: "In Progress",
     arrivedAt: "08:45 AM",
-    vet: "Dr. Omuya",
+    vet: "Dr. Peter",
   },
   {
     id: "Q-002",
@@ -44,7 +44,7 @@ const initialQueue: QueueEntry[] = [
     priority: "Normal",
     status: "Waiting",
     arrivedAt: "09:00 AM",
-    vet: "Dr. Omuya",
+    vet: "Dr. Peter",
   },
   {
     id: "Q-003",
@@ -88,7 +88,7 @@ const statusColors: Record<QueueStatus, string> = {
   Skipped: "bg-gray-100 text-gray-500",
 };
 
-const vets = ["Dr. Omuya", "Dr. Kamau", "Dr. Njoroge", "Dr. Wanjiru"];
+const vets = ["Dr. Peter", "Dr. Kamau", "Dr. Njoroge", "Dr. Wanjiru"];
 
 const emptyForm = {
   animalName: "",

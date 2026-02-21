@@ -44,7 +44,7 @@ const modules = [
 
 const recentActivity = [
   { time: "08:30 AM", action: "Animal registered", detail: "Cow #A-112 — Owner: John Mwangi", type: "registration" },
-  { time: "09:00 AM", action: "Appointment scheduled", detail: "Dog #D-045 — Dr. Omuya at 2:00 PM", type: "appointment" },
+  { time: "09:00 AM", action: "Appointment scheduled", detail: "Dog #D-045 — Dr. Peter at 2:00 PM", type: "appointment" },
   { time: "09:15 AM", action: "Queue updated", detail: "Goat #G-078 moved to position #2", type: "queue" },
   { time: "09:45 AM", action: "Report generated", detail: "Treatment report for Cat #C-033", type: "report" },
   { time: "10:00 AM", action: "Animal registered", detail: "Horse #H-019 — Owner: Mary Wanjiku", type: "registration" },

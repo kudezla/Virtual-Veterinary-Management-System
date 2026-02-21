@@ -7,7 +7,7 @@ type LoginRole = "vet" | "owner";
 
 // Demo credentials
 const VET_CREDENTIALS = [
-  { email: "dr.omuya@vetms.ac.ke", password: "vet123", name: "Dr. Omuya" },
+  { email: "dr.peter@vetms.ac.ke", password: "vet123", name: "Dr. Peter" },
   { email: "dr.wanjiku@vetms.ac.ke", password: "vet123", name: "Dr. Wanjiku" },
   { email: "admin@vetms.ac.ke", password: "admin123", name: "Admin" },
 ];
@@ -130,7 +130,7 @@ export default function LoginPage() {
                     type="email"
                     value={vetEmail}
                     onChange={(e) => setVetEmail(e.target.value)}
-                    placeholder="dr.omuya@vetms.ac.ke"
+                    placeholder="dr.peter@vetms.ac.ke"
                     required
                     className="w-full border border-gray-300 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent"
                   />
@@ -160,7 +160,7 @@ export default function LoginPage() {
                 {/* Demo hint */}
                 <div className="bg-green-50 border border-green-200 rounded-lg p-3 text-xs text-green-800">
                   <p className="font-semibold mb-1">Demo credentials:</p>
-                  <p>Email: <span className="font-mono">dr.omuya@vetms.ac.ke</span></p>
+                  <p>Email: <span className="font-mono">dr.peter@vetms.ac.ke</span></p>
                   <p>Password: <span className="font-mono">vet123</span></p>
                 </div>
               </form>

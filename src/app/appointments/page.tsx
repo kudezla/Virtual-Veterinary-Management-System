@@ -27,7 +27,7 @@ const initialAppointments: Appointment[] = [
     date: "2025-02-21",
     time: "09:00",
     reason: "Routine vaccination",
-    vet: "Dr. Omuya",
+    vet: "Dr. Peter",
     status: "Scheduled",
   },
   {
@@ -53,12 +53,12 @@ const initialAppointments: Appointment[] = [
     date: "2025-02-22",
     time: "08:00",
     reason: "Deworming",
-    vet: "Dr. Omuya",
+    vet: "Dr. Peter",
     status: "Scheduled",
   },
 ];
 
-const vets = ["Dr. Omuya", "Dr. Kamau", "Dr. Njoroge", "Dr. Wanjiru"];
+const vets = ["Dr. Peter", "Dr. Kamau", "Dr. Njoroge", "Dr. Wanjiru"];
 
 const statusColors: Record<string, string> = {
   Scheduled: "bg-blue-100 text-blue-700",
