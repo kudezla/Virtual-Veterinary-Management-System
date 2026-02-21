@@ -111,9 +111,6 @@ export default function LoginPage() {
               <form onSubmit={handleVetLogin} className="space-y-5">
                 <div>
                   <h2 className="text-lg font-bold text-gray-800 mb-1">Doctor Login</h2>
-                  <p className="text-sm text-gray-500">
-                    Access all system modules including appointments, queue, and reports.
-                  </p>
                 </div>
 
                 {vetError && (
